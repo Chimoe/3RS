@@ -1,17 +1,49 @@
+
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Sign in to your student account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
+
+
+    <title>Sign in</title>
+
+    <style>
+        input[type=text], input[type=password]
+        {
+            width: 25%;
+            padding: 8px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #e51400;
+            color: white;
+            padding: 8px 18px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+        }
+    </style>
 </head>
 
 <body>
     <h1 style="text-align:center;">RPI Room Reservation System</h1>
     <p style="text-align:center;">Sign in to your account below</p>
 
-    <div class = "container">
-        <form action="/action.php" method = "post">
-            RCS ID:<br>
+    <div class = "w3-container w3-center">
+        <form method="post" action="/home/">
+            {% csrf_token %}
+            <br>RCS ID:<br>
             <input type = "text" name = "rcs"><br>
             Password:<br>
             <input type = "password" name = "password"><br><br>
@@ -19,10 +51,12 @@
         </form>
     </div>
 
-    <address style="text-align:right;font-size:70%;font-style:normal;">
-        A current RCOS project.<br>
-        Contact us by emailing:<br>
-        siddik2@rpi.edu<br>
-    </address>
+    <div class="w3-panel w3-win8-red">
+        <address style="text-align:right;font-size:70%;font-style:normal;text-color:white;">
+            A current RCOS project.<br>
+            Contact us by emailing:<br>
+            siddik2@rpi.edu<br>
+        </address>
+    </div>
 </body>
 </html>
