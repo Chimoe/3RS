@@ -14,24 +14,59 @@
     <title>Sign in</title>
 
     <style>
-        input[type=text], input[type=password]
-        {
+        input[type=text], input[type=password] {
             width: 25%;
-            padding: 8px 20px;
-            margin: 8px 0;
+            padding: 6px 20px;
+            margin: 4px;
             display: inline-block;
-            border: 1px solid #ccc;
+            border: 3px solid crimson;
+            outline: none;
             box-sizing: border-box;
+            border-radius: 4px;
+            transition: .4s;
+            opacity: 0.6;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            border: 3px solid crimson;
+            opacity: 1
         }
 
         button {
-            background-color: #e51400;
+            background-color: crimson;
             color: white;
-            padding: 8px 18px;
-            margin: 8px 0;
-            border: none;
+            padding: 10px;
+            border: solid crimson;
             cursor: pointer;
             width: 10%;
+            border-radius: 4px;
+            transition-duration: 0.4s;
+            opacity: 0.6;
+        }
+
+        button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            opacity: 1;
+        }
+
+        .footer {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding-right: 10px;
+            background-color: crimson;
+            font-size:70%;
+            font-style:normal;
+            color:white;
+        }
+
+        .logo {
+            float: left;
+            width: 15%;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            border:0;
         }
     </style>
 </head>
@@ -40,10 +75,10 @@
     <h1 style="text-align:center;">RPI Room Reservation System</h1>
     <p style="text-align:center;">Sign in to your account below</p>
 
-    <div class = "w3-container w3-center">
+    <div class = "container" style = "text-align:center">
         <form method="post" action="/home/">
             {% csrf_token %}
-            <br>RCS ID:<br>
+            <br>RCS ID: <br>
             <input type = "text" name = "rcs"><br>
             Password:<br>
             <input type = "password" name = "password"><br><br>
@@ -51,12 +86,17 @@
         </form>
     </div>
 
-    <div class="w3-panel w3-win8-red">
-        <address style="text-align:right;font-size:70%;font-style:normal;text-color:white;">
-            A current RCOS project.<br>
-            Contact us by emailing:<br>
-            siddik2@rpi.edu<br>
-        </address>
-    </div>
+    <footer class="footer">
+        <p>
+            <a href ="https://rpi.edu/" target="_blank">
+                <img class = "logo" src="https://science.rpi.edu/sites/all/themes/rpi_zen_boot_14/Assets_2014/images/RPIlogo.png">
+            </a>
+            <div class = "contact" style = "text-align:right;">
+                A current RCOS project.<br>
+                Contact us by emailing:<br>
+                siddik2@rpi.edu<br>
+            </div>
+        </p>
+    </footer>
 </body>
 </html>
