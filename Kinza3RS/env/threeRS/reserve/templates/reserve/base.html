@@ -7,10 +7,40 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
-    <title>RPI's Room Reservation Site</title>
-</head>
-<body>
-    {% block content %} {% endblock %}
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        .logoutButton{
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+            background-color: crimson;
+            color: white;
+            border: solid crimson;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 5%;
+            opacity: 0.6;
+        }
 
+        .logoutButton:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+        <header>
+            <form method = "post" action = "{% url 'logout' %}">
+                {% csrf_token %}
+                <button type = "submit" class = "logoutButton">Logout</button>
+                <input type="hidden" name="next" value="{{ next }}" >
+            </form>
+        </header>
+    {% endif %}
+    {% block content %} {% endblock %}
 </body>
+
 </html>
