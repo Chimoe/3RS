@@ -1,12 +1,24 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def login(request):
-    return render(request,'reserve/login.html',{})
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return home(request)
+    else:
+        return HttpResponseNotFound("Invalid Login")
 
+@login_required()
 def home(request):
     return render(request, 'reserve/home.html',{})
 
+@login_required()
+def userLogout(request):
+    logout(request)
+    return render(request, 'reserve/logout.html', {})

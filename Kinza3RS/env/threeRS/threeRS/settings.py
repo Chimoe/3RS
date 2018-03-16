@@ -15,9 +15,9 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Where to direct user after logging in
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/' # Where to direct user if they aren't authenticated
+LOGIN_REDIRECT_URL = 'home' # Where to direct user after logging in
+LOGOUT_REDIRECT_URL = 'logout'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/

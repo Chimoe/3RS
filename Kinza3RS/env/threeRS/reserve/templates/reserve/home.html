@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>RPI's Room Reservation Site</title>
-</head>
+{% extends 'reserve\base.html' %}
 
-<body>
-    <h1 style = "font-size:500%; text-align:center">Hi Paul</h1>
-</body>
+{% block title %}Home{% endblock %}
 
-</html>
+{% block content %}
+    <p style = "text-align:center; font-size:500%;">Welcome, {{ user.username }}</p>
+    <a href="{% url 'logout'%}">Logout</a>
+{% endblock %}

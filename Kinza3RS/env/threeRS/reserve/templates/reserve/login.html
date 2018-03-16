@@ -1,17 +1,6 @@
+{% extends 'reserve\base.html' %}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
-
-
-    <title>Sign in</title>
+{% block content %}
 
     <style>
         input[type=text], input[type=password] {
@@ -69,20 +58,32 @@
             border:0;
         }
     </style>
-</head>
 
-<body>
     <h1 style="text-align:center;">RPI Room Reservation System</h1>
     <p style="text-align:center;">Sign in to your account below</p>
 
+    {% if form.errors %}
+        <p> Your username/password is incorrect. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+
     <div class = "container" style = "text-align:center">
-        <form method="post" action="/home/">
+        <form method="post" action = "{% url 'login' %}">
             {% csrf_token %}
             <br>RCS ID: <br>
-            <input type = "text" name = "rcs"><br>
+            {{ form.username }} <br>
             Password:<br>
-            <input type = "password" name = "password"><br><br>
+            {{ form.password }} <br><br>
             <button type = "submit">Login</button>
+            <input type="hidden" name="next" value="{{ next }}" >
         </form>
     </div>
 
@@ -98,5 +99,5 @@
             </div>
         </p>
     </footer>
-</body>
-</html>
+
+{% endblock %}
