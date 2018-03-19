@@ -17,7 +17,7 @@ def login(request):
 
 @login_required()
 def home(request):
-    return render(request, 'reserve/home.html',{})
+    return render(request, 'reserve/3RS.html',{})
 
 @login_required()
 def logoutView(request):
