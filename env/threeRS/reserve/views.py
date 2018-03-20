@@ -19,6 +19,9 @@ def login(request):
 def home(request):
     return render(request, 'reserve/3RS.html',{})
 
+def signup(request):
+    return render(request, 'reserve/signup.html',{})
+
 @login_required()
 def logoutView(request):
     logout(request)
@@ -42,3 +45,4 @@ def results(request, building_id):
 
 def take(request, building_id):
     return HttpResponse("You're taking a room in building %s." % building_id)
+

@@ -39,24 +39,6 @@
             opacity: 1;
         }
 
-        .footer {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            padding-right: 10px;
-            background-color: crimson;
-            font-size:70%;
-            font-style:normal;
-            color:white;
-        }
-
-        .logo {
-            float: left;
-            width: 15%;
-            padding-left: 10px;
-            border:0;
-        }
     </style>
 
     <h1 style="text-align:center;">RPI Room Reservation System</h1>
@@ -68,8 +50,7 @@
 
     {% if next %}
         {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
+        <p action= "{% url 'home' %}"></p>
         {% else %}
         <p action = "{% url 'login' %}">Please login to see this page.</p>
         {% endif %}
@@ -83,21 +64,9 @@
             Password:<br>
             {{ form.password }} <br><br>
             <button type = "submit">Login</button>
-            <input type="hidden" name="next" value="{{ next }}" >
+            <input type="hidden" name="next" value="{{ next }}">
         </form>
     </div>
 
-    <footer class="footer">
-        <p>
-            <a href ="https://rpi.edu/" target="_blank">
-                <img class = "logo" src="https://science.rpi.edu/sites/all/themes/rpi_zen_boot_14/Assets_2014/images/RPIlogo.png">
-            </a>
-            <div class = "contact" style = "text-align:right;">
-                A current RCOS project.<br>
-                Contact us by emailing:<br>
-                siddik2@rpi.edu<br>
-            </div>
-        </p>
-    </footer>
 
 {% endblock %}
