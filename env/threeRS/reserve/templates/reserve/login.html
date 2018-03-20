@@ -50,8 +50,7 @@
 
     {% if next %}
         {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
+        <p action= "{% url 'home' %}"></p>
         {% else %}
         <p action = "{% url 'login' %}">Please login to see this page.</p>
         {% endif %}
@@ -65,7 +64,7 @@
             Password:<br>
             {{ form.password }} <br><br>
             <button type = "submit">Login</button>
-            <input type="hidden" name="next" value="{{ next }}" >
+            <input type="hidden" name="next" value="{{ next }}">
         </form>
     </div>
 

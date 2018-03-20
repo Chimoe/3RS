@@ -51,7 +51,7 @@
 </head>
 
 <body>
-    {% if request.path != 'login' and user.is_authenticated %}
+    {% if request.path != '/' and user.is_authenticated %}
         <header>
             <form method = "post" action = "{% url 'logout' %}">
                 {% csrf_token %}
