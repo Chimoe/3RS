@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Template location
-TEMPLATE_DIR = os.path.join(os.path.dirname(BASE_DIR), "static", "templates")
+TEMPLATE_DIR = os.path.join(BASE_DIR, "static", "templates")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # Added myself
     'phonenumber_field',
     # apps
-    'building.apps.BuildingConfig',
     'signup.apps.SignUpConfig',
     'reservation.apps.ReservationConfig',
 ]
@@ -128,4 +127,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (os.path.join(os.path.dirname(BASE_DIR), "static"),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
