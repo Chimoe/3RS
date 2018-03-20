@@ -19,6 +19,9 @@ def login(request):
 def home(request):
     return render(request, 'reserve/3RS.html',{})
 
+def signup(request):
+    return render(request, 'reserve/signup.html',{})
+
 @login_required()
 def logoutView(request):
     logout(request)

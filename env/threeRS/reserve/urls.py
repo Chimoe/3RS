@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:building_id>/take/', views.take, name='take'),
     url(r'^logout/$', views.logoutView, name='logout'),
     url(r'^home/$', views.home, name='home'),
+    url(r'^signup/$', views.signup, name='signup'),
 ]
