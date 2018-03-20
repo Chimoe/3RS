@@ -42,3 +42,4 @@ def results(request, building_id):
 
 def take(request, building_id):
     return HttpResponse("You're taking a room in building %s." % building_id)
+
