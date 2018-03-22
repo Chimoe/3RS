@@ -1,5 +1,5 @@
 function showHome(){
-    var element = document.getElementById("main");
+    var element = document.getElementById("main-area");
     element.innerHTML = '\n' +
         '<h3>Buildings Available for Reservation</h3>\n' +
         '{% if buildings %}\n' +
@@ -14,7 +14,7 @@ function showHome(){
 }
 
 function showBuliding(){
-    var element = document.getElementById("main");
+    var element = document.getElementById("main-area");
     element.innerHTML = '\
 				<div class="discover">\
 					<div class="row">\
