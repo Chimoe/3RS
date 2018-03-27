@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign in{% endblock %}
+
+{% block content %}
+    <style>
+        input[type=text], input[type=password] {
+            width: 20%;
+            padding: 6px 20px;
+            margin: 4px;
+            display: inline-block;
+            border: 3px solid crimson;
+            outline: none;
+            box-sizing: border-box;
+            border-radius: 4px;
+            transition: .4s;
+            opacity: 0.6;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            border: 3px solid crimson;
+            opacity: 1;
+        }
+
+        button {
+            background-color: crimson;
+            color: white;
+            padding: 10px;
+            border: solid crimson;
+            cursor: pointer;
+            width: 10%;
+            border-radius: 4px;
+            transition-duration: 0.4s;
+            opacity: 0.6;
+        }
+
+        button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            opacity: 1;
+        }
+
+    </style>
+
+    <h1 style="text-align:center;">RPI Room Reservation System</h1>
+    <p style="text-align:center;">Sign in to your account below</p>
+
+    {% if form.errors %}
+        <p> Your username/password is incorrect. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p action= "{% url 'home' %}"></p>
+        {% else %}
+        <p action = "{% url 'login' %}">Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+
+    <div class = "container" style = "text-align:center">
+        <form method="post" action = "{% url 'login' %}">
+            {% csrf_token %}
+            <br>RCS ID: <br>
+            {{ form.username }} <br>
+            Password:<br>
+            {{ form.password }} <br><br>
+            <button type = "submit">Login</button>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+
+
+{% endblock %}
