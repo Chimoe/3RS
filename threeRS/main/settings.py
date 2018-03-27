@@ -15,6 +15,10 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+LOGIN_URL = '/' # Where to direct user if they aren't authenticated
+LOGIN_REDIRECT_URL = '/home/' # Where to direct user after logging in
+LOGOUT_REDIRECT_URL = '/logout/'
+
 # Template location
 TEMPLATE_DIR = os.path.join(BASE_DIR, "static", "templates")
 
