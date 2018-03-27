@@ -7,3 +7,5 @@ env
 .DS_Store
 *.pyc
 *.pyc
+env/.idea/env.iml
+env/.idea/workspace.xml

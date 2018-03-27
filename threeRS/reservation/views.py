@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Building, Room, Reservation
+from django.http import HttpResponseNotFound
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def buildings(request):
 	buildings = Building.objects.order_by('name')
@@ -51,3 +54,22 @@ def reserve_success(request, building_id, room_id):
 				   'room': r,
 				   'success': 'You made a reservation for ' + str(r), }
 		return render(request, 'reserve.html', context)
+
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return home(request)
+    else:
+        return HttpResponseNotFound("Invalid Login")
+
+@login_required()
+def home(request):
+    return render(request, 'reserve/3RS.html',{})
+
+@login_required()
+def logoutView(request):
+    logout(request)
+    return render(request, 'reserve/logout.html',{})
