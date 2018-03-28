@@ -1,0 +1,97 @@
+#app {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.VuePagination {
+    text-align: center;
+}
+
+.vue-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.vue-pagination-ad {
+    text-align: center;
+}
+
+.glyphicon.glyphicon-eye-open {
+    width: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+th:nth-child(3) {
+    text-align: center;
+}
+
+.VueTables__child-row-toggler {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.VueTables__child-row-toggler--closed::before {
+    content: "+";
+}
+
+.VueTables__child-row-toggler--open::before {
+    content: "-";
+}
+
+#search {
+    margin-bottom: 10px;
+}
+
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-right: 10px;
+    background-color: rosybrown;
+    font-size: 150%;
+    font-style: oblique;
+    color: white;
+}
+
+.logo {
+    float: left;
+    width: 15%;
+    padding-left: 7px;
+    padding-bottom: 7px;
+    border: 0;
+}
+
+.btn {
+    margin-left: 10px;
+}
+
+a:link {
+    text-decoration: none;
+    color: white
+}
+
+a:active {
+    text-decoration: blink
+}
+
+a:hover {
+    text-decoration: underline;
+    color: red
+}
+
+a:visited {
+    text-decoration: none;
+    color: green
+}
+
+.fancy-theme-gray.fancy-panel .fancy-panel-header {
+    background-color: white;
+    border-bottom: 2px solid #e3223a;
+    color: #515151;
+}
