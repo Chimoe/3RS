@@ -1,59 +1,127 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+
     <meta charset="utf-8">
     <title>3RS</title>
 
     <!-- Bootstrap 4 CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- FontAwesome CSS + Font -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <!-- FontAwesome CSS + Font + Icons-->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+            integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+            crossorigin="anonymous"></script>
+    <link rel="icon" href="https://www.rpi.edu/assets2017/images/favicon.png">
 
-    <!-- Underscore.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
     <!-- VueJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.js"></script>
 
-  </head>
-  <body>
+    <!-- main.resources -->
+    <script src="resources/main.js"></script>
+    <script src="resources/room.js"></script>
 
-    <!-- Navbar -->
-    <nav class="navbar bg-dark text-light">
-      <a class="navbar-brand" href = "{% url 'login' %}">Rensselaer Room Reservation System</a>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" target="_blank" href="https://rcos.io">RCOS</a>
-        </li>
-      </ul>
-      <a class="nav-link" target="_blank" href="https://webforms.rpi.edu/special-event-room-reservation-requests">Reservation Form</a>
-    </nav>
+    <script src="https://cdn.fancygrid.com/fancy.min.js"></script>
 
-    <!-- Application Container -->
-    <div class="container mt-4" id="app">
-      <hello/>
+    <!-- vue.resources -->
+    <script type="text/javascript" src='resources/vue.js'></script>
+
+    <!-- style -->
+    <link rel="stylesheet" type="text/css" href="resources/3rstyle.css">
+
+</head>
+
+<body>
+
+<!--[if lt IE 7]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1d3461">
+    <a class="navbar-brand" href="#" onclick="showHome()">3RS</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://webforms.rpi.edu/special-event-room-reservation-requests">
+                    <i class="fas fa-calendar-check"></i>
+                    Reservations <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>
+                </button>
+            </form>
+        </ul>
     </div>
 
-    <script>
+    <div class="navbar-collapse collapse w-40 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="">
+                <a href="login.html" class="btn btn-outline-dark active" role="button"><i
+                        class="fas fa-sliders-h"></i> Account Settings
+                </a>
+            </li>
+            <li class="">
+                <a href="logout.html" class="btn btn-danger" role="button"><i class="fas fa-power-off"></i> Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-      Vue.component('hello', {
-        template: `
-          <div class="row" id='app'>
-            <div class="col-lg-12">
-              <div class='card card-body'>
+<!-- Application Container -->
+<div class="container mt-4">
+    <div class="row" id='app'>
+        <div class="col-lg-12">
+            <div class='card card-body'>
+                <div class="inner cover" id="main-area">
+                    <li><a href="reserve.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Reserve</a></li>
+                    <page-layout/>
 
-                <p class='lead'>To reserve a room, click the link on the upper-right and fill out the form.</p>
-
-              </div>
+                </div>
             </div>
-          </div>
-        `
-      })
+        </div>
 
-      new Vue({ el: "#app" });
 
-    </script>
 
-  </body>
-</html>
+        <script>
+            new Vue({ el: "#app" });
+        </script>
+
+
+    </div>
+</div>
+
+
+<footer class="footer" id="bot-area" style="text-align:right;">
+    <a href="https://rpi.edu/" target="_blank">
+        <img class="logo" src="https://science.rpi.edu/sites/all/themes/rpi_zen_boot_14/Assets_2014/images/RPIlogo.png">
+    </a>
+    <div class="inner">
+        <p>An <a href="https://rcos.io"><strong>RCOS</strong></a> project by <a
+                href="https://github.com/Jeffreyceballos">Jeffrey
+            Ceballos</a>, <a href="mailto:suzihitaki@gmail.com">Enrique Su</a>, Paul Lim, Kinza Siddiqui, Zhao Wei Wang
+        </p>
+    </div>
+</footer>
+</body>
